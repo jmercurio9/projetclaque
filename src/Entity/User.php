@@ -4,33 +4,28 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity("email")
  */
 class User
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\email
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    protected $email;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+
     private $password;
 
     /**
