@@ -13,18 +13,26 @@ use Symfony\Component\Validator\Constraints as Assert;
 
  */
 class User
-{
-    /**
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     * @Assert\email
+{    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    protected $email;
+
+    /**
+    * @ORM\Column(type="string", length=255, unique=true)
+    */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $email;
-
 
     private $password;
 

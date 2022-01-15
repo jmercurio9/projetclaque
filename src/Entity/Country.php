@@ -8,14 +8,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=CountryRepository::class)
- * @UniqueEntity("Name")
  */
+
 class Country
 {
     /**
-     * @ORM\Column(name="Name", type="string", length=255, unique=true)
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
+    private $id;
 
+    /**
+     * @ORM\Column(type="string", length=255,unique=true )
+     */
     protected $Name;
 
 
